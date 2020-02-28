@@ -1,6 +1,24 @@
 import React, { useState } from "react";
 import { makeGrid } from "../utilities/makeGrid"
-import styled from "styled-components";
+import styled, {keyframes} from "styled-components";
+
+const rotateLeft = keyframes`
+  from{
+    transform: rotateY(0deg);
+  }
+  to{
+    transform: rotateY(180deg);
+  }
+`
+
+const rotateRight = keyframes`
+  from{
+    transform: rotateY(0deg);
+  }
+  to{
+    transform: rotateY(-180deg);
+  }
+`
 
 const Container = styled.aside`
 .overAll{
@@ -27,18 +45,23 @@ const Container = styled.aside`
 
 .card{
   border: 2px solid white;
+  transition-delay: 0.25s;
   border-radius: 20px;
   margin-top: 20px;
-  transition: .5 linear all;
+  transition: .5 linear color;
   flex-grow: 1;
 }
 .visable{
   border : 2px solid white;
   transition: .5 linear all;
+  animation: ${rotateLeft} .5s linear;
 }
 .hidden:hover{
   border: 2px solid blue;
-  transition: .5 linear all;
+  transition: .5 linear border;
+}
+.hidden{
+  animation: ${rotateRight} .5s linear;
 }
 `
 
